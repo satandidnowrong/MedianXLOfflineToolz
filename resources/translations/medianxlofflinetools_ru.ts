@@ -961,7 +961,7 @@ to shared stash</source>
     <message>
         <location filename="../../medianxlofflinetools.cpp" line="81"/>
         <source>1337 hacker detected! Please, play legit.</source>
-        <translation>Кулхацкер детектед! Пожалуйста, играйте честно.</translation>
+        <translation>Кулхацкер детектед! Смирись с этим. Это блин синглплеер.</translation>
     </message>
     <message>
         <location filename="../../medianxlofflinetools.cpp" line="82"/>

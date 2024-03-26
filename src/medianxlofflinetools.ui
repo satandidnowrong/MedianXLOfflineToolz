@@ -14,7 +14,7 @@
    <bool>true</bool>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources/medianxlofflinetools.qrc">
+   <iconset resource="../resources/medianxlofflinetools.qrc">
     <normaloff>:/MedianXLOfflineTools/icons/icon.png</normaloff>:/MedianXLOfflineTools/icons/icon.png</iconset>
   </property>
   <property name="unifiedTitleAndToolBarOnMac">
@@ -488,8 +488,8 @@
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>91</width>
-       <height>32</height>
+       <width>55</width>
+       <height>22</height>
       </rect>
      </property>
      <property name="sizeAdjustPolicy">
@@ -501,8 +501,8 @@
       <rect>
        <x>188</x>
        <y>20</y>
-       <width>91</width>
-       <height>32</height>
+       <width>55</width>
+       <height>22</height>
       </rect>
      </property>
      <property name="sizeAdjustPolicy">
@@ -559,7 +559,7 @@
      <x>0</x>
      <y>0</y>
      <width>686</width>
-     <height>24</height>
+     <height>17</height>
     </rect>
    </property>
    <property name="nativeMenuBar">
@@ -755,7 +755,7 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionLoadCharacter">
    <property name="icon">
-    <iconset resource="resources/medianxlofflinetools.qrc">
+    <iconset resource="../resources/medianxlofflinetools.qrc">
      <normaloff>:/MedianXLOfflineTools/icons/open.png</normaloff>:/MedianXLOfflineTools/icons/open.png</iconset>
    </property>
    <property name="text">
@@ -773,7 +773,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/medianxlofflinetools.qrc">
+    <iconset resource="../resources/medianxlofflinetools.qrc">
      <normaloff>:/MedianXLOfflineTools/icons/save.png</normaloff>:/MedianXLOfflineTools/icons/save.png</iconset>
    </property>
    <property name="text">
@@ -796,7 +796,7 @@
   </action>
   <action name="actionAbout">
    <property name="icon">
-    <iconset resource="resources/medianxlofflinetools.qrc">
+    <iconset resource="../resources/medianxlofflinetools.qrc">
      <normaloff>:/MedianXLOfflineTools/icons/about.png</normaloff>:/MedianXLOfflineTools/icons/about.png</iconset>
    </property>
    <property name="text">
@@ -814,7 +814,7 @@
   </action>
   <action name="actionAboutQt">
    <property name="icon">
-    <iconset resource="resources/medianxlofflinetools.qrc">
+    <iconset resource="../resources/medianxlofflinetools.qrc">
      <normaloff>:/MedianXLOfflineTools/icons/qt.png</normaloff>:/MedianXLOfflineTools/icons/qt.png</iconset>
    </property>
    <property name="text">
@@ -888,7 +888,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/medianxlofflinetools.qrc">
+    <iconset resource="../resources/medianxlofflinetools.qrc">
      <normaloff>:/MedianXLOfflineTools/icons/reload.png</normaloff>:/MedianXLOfflineTools/icons/reload.png</iconset>
    </property>
    <property name="text">
@@ -933,7 +933,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/medianxlofflinetools.qrc">
+    <iconset resource="../resources/medianxlofflinetools.qrc">
      <normaloff>:/MedianXLOfflineTools/icons/items.png</normaloff>:/MedianXLOfflineTools/icons/items.png</iconset>
    </property>
    <property name="text">
@@ -987,7 +987,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="resources/medianxlofflinetools.qrc">
+    <iconset resource="../resources/medianxlofflinetools.qrc">
      <normaloff>:/MedianXLOfflineTools/icons/find.png</normaloff>:/MedianXLOfflineTools/icons/find.png</iconset>
    </property>
    <property name="text">
@@ -1099,7 +1099,7 @@
   </action>
   <action name="actionFirstPage">
    <property name="icon">
-    <iconset resource="resources/medianxlofflinetools.qrc">
+    <iconset resource="../resources/medianxlofflinetools.qrc">
      <normaloff>:/PlugyArrows/icons/plugy/first.png</normaloff>:/PlugyArrows/icons/plugy/first.png</iconset>
    </property>
    <property name="text">
@@ -1114,7 +1114,7 @@
   </action>
   <action name="actionPrevious100">
    <property name="icon">
-    <iconset resource="resources/medianxlofflinetools.qrc">
+    <iconset resource="../resources/medianxlofflinetools.qrc">
      <normaloff>:/PlugyArrows/icons/plugy/left100.png</normaloff>:/PlugyArrows/icons/plugy/left100.png</iconset>
    </property>
    <property name="text">
@@ -1129,7 +1129,7 @@
   </action>
   <action name="actionPrevious10">
    <property name="icon">
-    <iconset resource="resources/medianxlofflinetools.qrc">
+    <iconset resource="../resources/medianxlofflinetools.qrc">
      <normaloff>:/PlugyArrows/icons/plugy/left10.png</normaloff>:/PlugyArrows/icons/plugy/left10.png</iconset>
    </property>
    <property name="text">
@@ -1144,7 +1144,7 @@
   </action>
   <action name="actionPreviousPage">
    <property name="icon">
-    <iconset resource="resources/medianxlofflinetools.qrc">
+    <iconset resource="../resources/medianxlofflinetools.qrc">
      <normaloff>:/PlugyArrows/icons/plugy/left.png</normaloff>:/PlugyArrows/icons/plugy/left.png</iconset>
    </property>
    <property name="text">
@@ -1159,7 +1159,7 @@
   </action>
   <action name="actionNextPage">
    <property name="icon">
-    <iconset resource="resources/medianxlofflinetools.qrc">
+    <iconset resource="../resources/medianxlofflinetools.qrc">
      <normaloff>:/PlugyArrows/icons/plugy/right.png</normaloff>:/PlugyArrows/icons/plugy/right.png</iconset>
    </property>
    <property name="text">
@@ -1174,7 +1174,7 @@
   </action>
   <action name="actionNext10">
    <property name="icon">
-    <iconset resource="resources/medianxlofflinetools.qrc">
+    <iconset resource="../resources/medianxlofflinetools.qrc">
      <normaloff>:/PlugyArrows/icons/plugy/right10.png</normaloff>:/PlugyArrows/icons/plugy/right10.png</iconset>
    </property>
    <property name="text">
@@ -1189,7 +1189,7 @@
   </action>
   <action name="actionNext100">
    <property name="icon">
-    <iconset resource="resources/medianxlofflinetools.qrc">
+    <iconset resource="../resources/medianxlofflinetools.qrc">
      <normaloff>:/PlugyArrows/icons/plugy/right100.png</normaloff>:/PlugyArrows/icons/plugy/right100.png</iconset>
    </property>
    <property name="text">
@@ -1204,7 +1204,7 @@
   </action>
   <action name="actionLastPage">
    <property name="icon">
-    <iconset resource="resources/medianxlofflinetools.qrc">
+    <iconset resource="../resources/medianxlofflinetools.qrc">
      <normaloff>:/PlugyArrows/icons/plugy/last.png</normaloff>:/PlugyArrows/icons/plugy/last.png</iconset>
    </property>
    <property name="text">
@@ -1365,7 +1365,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="resources/medianxlofflinetools.qrc"/>
+  <include location="../resources/medianxlofflinetools.qrc"/>
  </resources>
  <connections>
   <connection>

@@ -60,12 +60,12 @@ BEGIN
         BLOCK "000004b0"
         BEGIN
             VALUE "CompanyName",      "kambala"
-            VALUE "FileDescription",  "Median XL character manager"
+            VALUE "FileDescription",  "Median XL Character Editor h4xz0rdzd"
             VALUE "FileVersion",      APP_VERSION_STR
-            VALUE "InternalName",     "MedianXLOfflineTools"
+            VALUE "InternalName",     "MedianXLOfflineToolz"
             VALUE "LegalCopyright",   "Copyright (C) kambala 2011-2022"
-            VALUE "OriginalFilename", "MedianXLOfflineTools.exe"
-            VALUE "ProductName",      "Median XL Offline Tools"
+            VALUE "OriginalFilename", "MedianXLOfflineToolz.exe"
+            VALUE "ProductName",      "Median XL Offline Toolz"
             VALUE "ProductVersion",   APP_VERSION_STR
         END
     END

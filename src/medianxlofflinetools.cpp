@@ -1,4 +1,4 @@
-#include    "medianxlofflinetools.h"
+#include "medianxlofflinetools.h"
 #include "ui_medianxlofflinetools.h"
 #include "colorsmanager.hpp"
 #include "qd2charrenamer.h"
@@ -337,9 +337,6 @@ bool MedianXLOfflineTools::loadFile(const QString &charPath, bool shouldCheckExt
     }
 
     setModified(false);
-#ifdef MAKE_FINISHED_CHARACTER
-    ui->actionSaveCharacter->setEnabled(true);
-#endif
 
     if (_findItemsDialog)
         _findItemsDialog->clearResults();
@@ -425,14 +422,14 @@ void MedianXLOfflineTools::saveCharacter()
 {
     CharacterInfo &charInfo = CharacterInfo::instance();
 #ifdef MAKE_FINISHED_CHARACTER
-    charInfo.basicInfo.level = Enums::CharacterStats::MaxLevel;
-    ui->levelSpinBox->setMaximum(Enums::CharacterStats::MaxLevel);
-    ui->levelSpinBox->setValue(Enums::CharacterStats::MaxLevel);
-    ui->signetsOfLearningEatenLineEdit->setText(QString::number(Enums::CharacterStats::SignetsOfLearningMax));
-    charInfo.setValueForStatistic(Enums::CharacterStats::SignetsOfLearningMax, Enums::CharacterStats::SignetsOfLearningEaten);
-    charInfo.setValueForStatistic(Enums::CharacterStats::SignetsOfSkillMax, Enums::CharacterStats::SignetsOfSkillEaten);
-    ui->freeSkillPointsLineEdit->setText(QString::number(totalPossibleSkillPoints(charInfo.basicInfo.level, kDifficultiesNumber, kDifficultiesNumber, kDifficultiesNumber)));
-    ui->freeStatPointsLineEdit->setText(QString::number(totalPossibleStatPoints(charInfo.basicInfo.level, kDifficultiesNumber)));
+        charInfo.basicInfo.level = Enums::CharacterStats::MaxLevel;
+        ui->levelSpinBox->setMaximum(Enums::CharacterStats::MaxLevel);
+        ui->levelSpinBox->setValue(Enums::CharacterStats::MaxLevel);
+        ui->signetsOfLearningEatenLineEdit->setText(QString::number(Enums::CharacterStats::SignetsOfLearningMax));
+        charInfo.setValueForStatistic(Enums::CharacterStats::SignetsOfLearningMax, Enums::CharacterStats::SignetsOfLearningEaten);
+        charInfo.setValueForStatistic(Enums::CharacterStats::SignetsOfSkillMax, Enums::CharacterStats::SignetsOfSkillEaten);
+        ui->freeSkillPointsLineEdit->setText(QString::number(totalPossibleSkillPoints(charInfo.basicInfo.level, kDifficultiesNumber, kDifficultiesNumber, kDifficultiesNumber)));
+        ui->freeStatPointsLineEdit->setText(QString::number(totalPossibleStatPoints(charInfo.basicInfo.level, kDifficultiesNumber)));
 #endif
 
     QByteArray tempFileContents(_saveFileContents);
@@ -468,8 +465,8 @@ void MedianXLOfflineTools::saveCharacter()
         charInfo.basicInfo.isHardcore = false;
 
 #ifdef MAKE_HC
-    charInfo.basicInfo.isHardcore = true;
-    charInfo.basicInfo.hadDied = false;
+        charInfo.basicInfo.isHardcore = true;
+        charInfo.basicInfo.hadDied = false;
 #endif
 #if !defined(QT_NO_DEBUG_OUTPUT) && !defined(DUPE_CHECK)
     charInfo.basicInfo.isLadder = !_makeNonLadderCheckbox->isChecked();
@@ -493,47 +490,47 @@ void MedianXLOfflineTools::saveCharacter()
     outputDataStream.setByteOrder(QDataStream::LittleEndian);
 
 #ifdef MAKE_FINISHED_CHARACTER
-    outputDataStream.skipRawData(Enums::Offsets::Progression);
-    outputDataStream << static_cast<quint16>(15); // become (m|p)atriarch
+        outputDataStream.skipRawData(Enums::Offsets::Progression);
+        outputDataStream << static_cast<quint16>(15); // become (m|p)atriarch
 
-    quint16 one = 1;
-    // enable all acts in all difficulties
-    for (int i = 0; i < kDifficultiesNumber; ++i)
-    {
-        outputDataStream.device()->seek(Enums::Offsets::QuestsData + i * Enums::Quests::Size); // A1 (0) //-V807
-        outputDataStream << one;
-        outputDataStream.skipRawData(6);  // Cain (8)
-        outputDataStream << one;
-        outputDataStream.skipRawData(4);  // A2 (14)
-        outputDataStream << one;
-        outputDataStream.skipRawData(14); // A3 (30)
-        outputDataStream << one;
-        outputDataStream.skipRawData(12); // Mephisto (44) + A4 (46)
-        outputDataStream << one << one;
-        outputDataStream.skipRawData(4);  // A4Q3 (52)
-        outputDataStream << one;
-        outputDataStream.skipRawData(2);  // A5 (56)
-        outputDataStream << one;
-    }
-
-    // set current difficulty to Destruction and act to 5
-    outputDataStream.device()->seek(Enums::Offsets::CurrentLocation);
-    outputDataStream << static_cast<quint8>(0);   // Hatred
-    outputDataStream << static_cast<quint8>(0);   // Terror
-    outputDataStream << static_cast<quint8>(132); // Destruction (10000100)
-
-    // complete skill/stat points quests
-    quint16 questComplete = static_cast<quint16>(0) | Enums::Quests::IsCompleted;
-    QList<int> quests = QList<int>() << Enums::Quests::DenOfEvil << Enums::Quests::Radament << Enums::Quests::LamEsensTome << Enums::Quests::GoldenBird << Enums::Quests::Izual;
-    for (int i = 0; i < kDifficultiesNumber; ++i)
-    {
-        int baseOffset = Enums::Offsets::QuestsData + i * Enums::Quests::Size;
-        foreach (int q, quests)
+        quint16 one = 1;
+        // enable all acts in all difficulties
+        for (int i = 0; i < kDifficultiesNumber; ++i)
         {
-            outputDataStream.device()->seek(baseOffset + q);
-            outputDataStream << questComplete;
+            outputDataStream.device()->seek(Enums::Offsets::QuestsData + i * Enums::Quests::Size); // A1 (0) //-V807
+            outputDataStream << one;
+            outputDataStream.skipRawData(6);  // Cain (8)
+            outputDataStream << one;
+            outputDataStream.skipRawData(4);  // A2 (14)
+            outputDataStream << one;
+            outputDataStream.skipRawData(14); // A3 (30)
+            outputDataStream << one;
+            outputDataStream.skipRawData(12); // Mephisto (44) + A4 (46)
+            outputDataStream << one << one;
+            outputDataStream.skipRawData(4);  // A4Q3 (52)
+            outputDataStream << one;
+            outputDataStream.skipRawData(2);  // A5 (56)
+            outputDataStream << one;
         }
-    }
+
+        // set current difficulty to Destruction and act to 5
+        outputDataStream.device()->seek(Enums::Offsets::CurrentLocation);
+        outputDataStream << static_cast<quint8>(0);   // Hatred
+        outputDataStream << static_cast<quint8>(0);   // Terror
+        outputDataStream << static_cast<quint8>(132); // Destruction (10000100)
+
+        // complete skill/stat points quests
+        quint16 questComplete = static_cast<quint16>(0) | Enums::Quests::IsCompleted;
+        QList<int> quests = QList<int>() << Enums::Quests::DenOfEvil << Enums::Quests::Radament << Enums::Quests::LamEsensTome << Enums::Quests::GoldenBird << Enums::Quests::Izual;
+        for (int i = 0; i < kDifficultiesNumber; ++i)
+        {
+            int baseOffset = Enums::Offsets::QuestsData + i * Enums::Quests::Size;
+            foreach (int q, quests)
+            {
+                outputDataStream.device()->seek(baseOffset + q);
+                outputDataStream << questComplete;
+            }
+        }
 #endif
 
 #ifdef ENABLE_PERSONALIZE
@@ -992,7 +989,7 @@ void MedianXLOfflineTools::resurrect()
         }
 
         // don't allow resurrected characters stay on hardcore
-        convertToSoftcore(true);
+        //convertToSoftcore(true);
     }
 }
 
@@ -1162,6 +1159,7 @@ void MedianXLOfflineTools::aboutApp()
                "<li><a href=\"%1=59\">aahz</a> for providing space on MXL server</li>"
                "<li><a href=\"%1=64\">whist</a> for helping with txt magic and D2 internals</li>"
                "<li>FixeR, Zelgadiss, moonra, Vilius, Delegus, aahz, HerrNieschnell, Quirinus, RollsRoyce, Aks_kun, Unremarkable and gAdlike for help, intensive testing and tips on GUI & functionality</li>"
+               "<li><a href=\"https://opencheattables.com/memberlist.php?mode=viewprofile&u=2594\">satandidnowrong</a> for <a href=\"https://opencheattables.com/viewtopic.php?t=996\">t3h h4x</a></li>"
              "</ul>", "arg is base URL").arg(baseUserUrl)
     );
     aboutBox.exec();
@@ -1677,7 +1675,7 @@ void MedianXLOfflineTools::connectSignals()
     connect(ui->showAllStatsButton, SIGNAL(clicked()), SLOT(showAllStats()));
     connect(ui->respecSkillsCheckBox, SIGNAL(toggled(bool)), SLOT(respecSkills(bool)));
 
-    connect(ui->activateWaypointsCheckBox,     SIGNAL(toggled(bool)), SLOT(modify()));
+    connect(ui->activateWaypointsCheckBox, SIGNAL(toggled(bool)), SLOT(modify()));
 
     // misc
     connect(_fsWatcher, SIGNAL(fileChanged(const QString &)), SLOT(fileContentsChanged()));
@@ -2002,12 +2000,12 @@ bool MedianXLOfflineTools::processSaveFile()
         {
             if (statValue > CharacterStats::SignetsOfLearningMax + 1)
                 shouldShowHackWarning = true;
-            statValue = CharacterStats::SignetsOfLearningMax;
+            //statValue = CharacterStats::SignetsOfLearningMax;
         }
         else if (statCode == CharacterStats::SignetsOfSkillEaten && statValue > CharacterStats::SignetsOfSkillMax)
         {
             shouldShowHackWarning = true;
-            statValue = CharacterStats::SignetsOfSkillMax;
+            //statValue = CharacterStats::SignetsOfSkillMax;
         }
         else if (statCode >= CharacterStats::Strength && statCode <= CharacterStats::Vitality)
         {
@@ -2027,18 +2025,18 @@ bool MedianXLOfflineTools::processSaveFile()
     }
 
 #ifndef MAKE_FINISHED_CHARACTER
-    int totalPossibleStats = totalPossibleStatPoints(charInfo.basicInfo.level);
-    if (totalStats > totalPossibleStats) // check if stats are hacked
-    {
-        for (int i = CharacterStats::Strength; i <= CharacterStats::Vitality; ++i)
+        int totalPossibleStats = totalPossibleStatPoints(charInfo.basicInfo.level);
+        if (totalStats > totalPossibleStats) // check if stats are hacked
         {
-            CharacterStats::StatisticEnum statCode = static_cast<CharacterStats::StatisticEnum>(i);
-            int baseStat = _baseStatsMap[charInfo.basicInfo.classCode].statsAtStart.statFromCode(statCode);
-            charInfo.setValueForStatistic(baseStat, statCode);
+            //for (int i = CharacterStats::Strength; i <= CharacterStats::Vitality; ++i)
+            //{
+            //    CharacterStats::StatisticEnum statCode = static_cast<CharacterStats::StatisticEnum>(i);
+            //    int baseStat = _baseStatsMap[charInfo.basicInfo.classCode].statsAtStart.statFromCode(statCode);
+            //    charInfo.setValueForStatistic(baseStat, statCode);
+            //}
+            //charInfo.setValueForStatistic(totalPossibleStats, CharacterStats::FreeStatPoints);
+            shouldShowHackWarning = true;
         }
-        charInfo.setValueForStatistic(totalPossibleStats, CharacterStats::FreeStatPoints);
-        shouldShowHackWarning = true;
-    }
 #endif
 
     // skills
@@ -2048,7 +2046,7 @@ bool MedianXLOfflineTools::processSaveFile()
     charInfo.basicInfo.skills.reserve(skillsNumber);
 
     inputDataStream.skipRawData(kSkillsHeader.length());
-    int firstSkillOffset = charInfo.skillsOffset + kSkillsHeader.length();
+    //int firstSkillOffset = charInfo.skillsOffset + kSkillsHeader.length();
     const Enums::Skills::SkillsOrderPair skillsIndexes = Enums::Skills::currentCharacterSkillsIndexes();
     for (int i = 0; i < skillsNumber; ++i)
     {
@@ -2062,9 +2060,9 @@ bool MedianXLOfflineTools::processSaveFile()
 #ifndef MAKE_FINISHED_CHARACTER
     if (skills > maxPossibleSkills) // check if skills are hacked
     {
-        skills = maxPossibleSkills;
-        charInfo.setValueForStatistic(maxPossibleSkills, CharacterStats::FreeSkillPoints);
-        _saveFileContents.replace(firstSkillOffset, skillsNumber, QByteArray(skillsNumber, 0));
+        //skills = maxPossibleSkills;
+        //charInfo.setValueForStatistic(maxPossibleSkills, CharacterStats::FreeSkillPoints);
+        //_saveFileContents.replace(firstSkillOffset, skillsNumber, QByteArray(skillsNumber, 0));
         shouldShowHackWarning = true;
     }
 #endif
@@ -2121,17 +2119,17 @@ bool MedianXLOfflineTools::processSaveFile()
     //qDebug() << "strength value is" << charInfo.valueOfStatistic(CharacterStats::Strength) * (strBonus ? strBonus : 1) + propValues.value(ItemProperties::Strength);
 
 #ifndef MAKE_FINISHED_CHARACTER
-    qint32 avoidValue = 0;//propValues.value(ItemProperties::Avoid1);
-    foreach (ItemInfo *item, itemsBuffer)
-        if (ItemDataBase::doesItemGrantBonus(item))
-            avoidValue += getValueOfPropertyInItem(item, ItemProperties::Avoid1);
-    if (avoidValue >= 100)
-    {
-        QString avoidText = tr("100% avoid is kewl");
-        if (avoidValue > 100)
-            avoidText += QString(" (%1)").arg(tr("well, you have %1% actually", "avoid").arg(avoidValue));
-        showLoadingError(avoidText, true);
-    }
+        qint32 avoidValue = 0;//propValues.value(ItemProperties::Avoid1);
+        foreach (ItemInfo *item, itemsBuffer)
+            if (ItemDataBase::doesItemGrantBonus(item))
+                avoidValue += getValueOfPropertyInItem(item, ItemProperties::Avoid1);
+        if (avoidValue >= 100)
+        {
+            QString avoidText = tr("100% avoid is kewl");
+            if (avoidValue > 100)
+                avoidText += QString(" (%1)").arg(tr("well, you have %1% actually", "avoid").arg(avoidValue));
+            showLoadingError(avoidText, true);
+        }
 #endif
 
     // corpse data
@@ -2491,9 +2489,9 @@ void MedianXLOfflineTools::updateUI()
     const CharacterInfo &charInfo = CharacterInfo::instance();
     QD2CharRenamer::updateNamePreviewLabel(ui->charNamePreviewLabel, charInfo.basicInfo.originalName);
 
-    ui->hardcoreGroupBox->setEnabled(charInfo.basicInfo.isHardcore);
-    if (charInfo.basicInfo.isHardcore)
-        updateHardcoreUIElements();
+    //ui->hardcoreGroupBox->setEnabled(charInfo.basicInfo.isHardcore);
+    //if (charInfo.basicInfo.isHardcore)
+    updateHardcoreUIElements();
 
     ui->classLineEdit->setText(Enums::ClassName::classes().at(charInfo.basicInfo.classCode));
     updateCharacterTitle(charInfo.basicInfo.isHardcore);
@@ -2570,8 +2568,9 @@ void MedianXLOfflineTools::updateUI()
 void MedianXLOfflineTools::updateHardcoreUIElements()
 {
     bool hadDied = CharacterInfo::instance().basicInfo.hadDied;
-    ui->convertToSoftcoreCheckBox->setDisabled(hadDied);
-    ui->actionConvertToSoftcore->setDisabled(hadDied);
+    //ui->convertToSoftcoreCheckBox->setDisabled(hadDied);
+    //ui->actionConvertToSoftcore->setDisabled(hadDied);
+    ui->convertToSoftcoreCheckBox->setEnabled(true);
     ui->resurrectButton->setEnabled(hadDied);
     ui->actionResurrect->setEnabled(hadDied);
 }
@@ -2753,7 +2752,7 @@ QByteArray MedianXLOfflineTools::statisticBytes()
                 int totalPossibleFreeStats = totalPossibleStatPoints(ui->levelSpinBox->value()) - investedStatPoints();
                 if (value > static_cast<quint32>(totalPossibleFreeStats)) // prevent hacks and shut the compiler up
                 {
-                    value = totalPossibleFreeStats;
+                    //value = totalPossibleFreeStats;
                     WARNING_BOX(kHackerDetected);
                 }
             }

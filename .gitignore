@@ -42,3 +42,5 @@ ui_*
 .vs
 
 utils/txt_parser/CompressFiles*
+
+*.vcxproj.user

@@ -917,7 +917,7 @@ to shared stash</source>
     <message>
         <location filename="../../medianxlofflinetools.cpp" line="81"/>
         <source>1337 hacker detected! Please, play legit.</source>
-        <translation type="unfinished"></translation>
+        <translation>1337 hacker detected! Get over it. It's effing single-player.</translation>
     </message>
     <message>
         <location filename="../../medianxlofflinetools.cpp" line="82"/>

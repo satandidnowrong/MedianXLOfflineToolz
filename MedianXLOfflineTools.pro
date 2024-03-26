@@ -1,2 +1,2 @@
-TARGET = MedianXLOfflineTools
+TARGET = MedianXLOfflineToolz
 include(app.pri)

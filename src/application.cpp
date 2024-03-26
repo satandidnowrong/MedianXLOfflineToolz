@@ -6,7 +6,7 @@
 #include <QTimer>
 #endif
 
-static const QString kAppName("Median XL Offline Tools");
+static const QString kAppName("Median XL Offline Toolz");
 
 
 Application::Application(int &argc, char **argv) : QtSingleApplication(kAppName, argc, argv), _mainWindow(0), _launchMode(LaunchModeNormal)
